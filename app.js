@@ -1,0 +1,23 @@
+const express = require("express")
+const bodyParser = require("body-parser")
+const cors = require("cors")
+const videoRoute = require("./route/video")
+const db= require("./db")
+
+
+const app = express()
+
+//middleware
+app.use(bodyParser.json())
+app.use("/api/v1/videos", videoRoute)
+
+app.get("/", (req, res) => {
+    res.send("server running")
+})
+
+
+
+//app port
+    app.listen(3001, () => console.log("server running on port 3001"))
+
+    module.exports = app
