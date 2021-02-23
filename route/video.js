@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     try {
         const videos = await Video.find((err, video) => {
             if (err) return res.status(500).json({ success: false, error : err })
-            return res.status(200).json({success:true, data : video})
+            return res.status(200).json({success:true, data:video})
         })
         return videos
     } catch (err) {

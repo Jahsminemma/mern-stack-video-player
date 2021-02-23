@@ -10,6 +10,11 @@ const app = express()
 //middleware
 app.use(bodyParser.json())
 app.use("/api/v1/videos", videoRoute)
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*"),
+        res.setHeader("Access-Control-Allow-Headers", "*"),
+        next()
+})
 
 app.get("/", (req, res) => {
     res.send("server running")
